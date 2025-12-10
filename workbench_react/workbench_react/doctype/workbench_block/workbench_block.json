@@ -1,0 +1,115 @@
+{
+  "creation": "2025-12-08T00:00:00.000000",
+  "doctype": "DocType",
+  "document_type": "Document",
+  "engine": "InnoDB",
+  "field_order": [
+    "workbench_page",
+    "block_type",
+    "content",
+    "properties",
+    "position",
+    "parent_block",
+    "prev_id",
+    "next_id",
+    "owner",
+    "is_deleted"
+  ],
+  "fields": [
+    {
+      "fieldname": "workbench_page",
+      "fieldtype": "Link",
+      "options": "Workbench Page",
+      "label": "Workbench Page",
+      "reqd": 1
+    },
+    {
+      "fieldname": "block_type",
+      "fieldtype": "Data",
+      "label": "Block Type",
+      "default": "paragraph"
+    },
+    {
+      "fieldname": "content",
+      "fieldtype": "JSON",
+      "label": "Content"
+    },
+    {
+      "fieldname": "properties",
+      "fieldtype": "JSON",
+      "label": "Properties"
+    },
+    {
+      "fieldname": "position",
+      "fieldtype": "Int",
+      "label": "Position",
+      "default": 0
+    },
+    {
+      "fieldname": "parent_block",
+      "fieldtype": "Data",
+      "label": "Parent Block",
+      "description": "For optional block hierarchy"
+    },
+    {
+      "fieldname": "prev_id",
+      "fieldtype": "Data",
+      "label": "Previous Block ID",
+      "description": "Linked-list backward pointer - CRITICAL for lazy loading"
+    },
+    {
+      "fieldname": "next_id",
+      "fieldtype": "Data",
+      "label": "Next Block ID",
+      "description": "Linked-list forward pointer - CRITICAL for lazy loading"
+    },
+    {
+      "fieldname": "owner",
+      "fieldtype": "Data",
+      "label": "Owner"
+    },
+    {
+      "fieldname": "is_deleted",
+      "fieldtype": "Check",
+      "label": "Is Deleted",
+      "default": 0
+    }
+  ],
+  "indexes": [
+    {
+      "fields": ["workbench_page"],
+      "description": "For fetching all blocks of a page"
+    },
+    {
+      "fields": ["prev_id"],
+      "description": "For linked-list traversal backward"
+    },
+    {
+      "fields": ["next_id"],
+      "description": "For linked-list traversal forward"
+    },
+    {
+      "fields": ["parent_block"],
+      "description": "For optional hierarchy queries"
+    }
+  ],
+  "modified": "2025-12-08T00:00:00.000000",
+  "name": "Workbench Block",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "print": 1,
+      "read": 1,
+      "role": "All",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "autoname": "UUID",
+  "track_changes": 1
+}
